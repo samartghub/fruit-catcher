@@ -35,17 +35,29 @@ function setup() {
 
 function draw() {
   background(back_img);
-  if(playerCount===2){
-    game.update(1);
-  }
+  
   if(gameState===1){
+    clear();
     game.play();
   }
   if(gameState===2){
     game.end();
   }
-  if(keyDown(LEFT_ARROW)){
-    game.updateDistance(-10);
-    
+
+  if(playerCount===2){
+    game.update(1);
   }
-}
+
+  if(keyIsDown(RIGHT_ARROW) && player.index !== null){
+    player.distance += 10
+    player.update();
+  }
+
+  if(keyIsDown(LEFT_ARROW) && player.index !== null){
+    player.distance -= 10
+    player.update(); 
+  }
+
+  
+  }
+
